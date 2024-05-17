@@ -13,8 +13,12 @@ const navigate=useNavigate()
     navigate('/login')
    }
    const handleSearch=()=>{
-    
+
    }
+   const onClearSearch = ()=>{
+ setSearchQuery("")
+   }
+   
 
   return (
     <div className="bg-white flex items-center justify-between px-6 py-2 drop-shadow">
@@ -22,7 +26,9 @@ const navigate=useNavigate()
         <SearchBar value={searchQuery}
         onChange={({target})=>{
           setSearchQuery(target.value)
-        }}/>
+        }}
+        handleSearch={handleSearch}
+        onClearSearch={onClearSearch}/>
         <ProfileInfo onLogOut={onLogOut}/>
     </div>
   )
