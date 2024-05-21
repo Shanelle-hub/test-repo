@@ -3,7 +3,9 @@ import Navbar from "../../components/Navbar/Navbar";
 import NoteCard from "../../components/Card/NoteCard";
 import { MdAdd } from "react-icons/md";
 import AddEditNotes from "./AddEditNotes";
-import {Modal} from 'react-modal'
+import Modal from 'react-modal'
+import TagInput from "../../components/Input/TagInput";
+
 
 
 function Home() {
@@ -31,14 +33,16 @@ function Home() {
             onPinNote={() => {}}
           />
           </div>
+
+          </div>
           <button
             className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary 
             hover:bg-blue-600 absolute right-10 bottom-10"
-            onClick={() => {}}
+            onClick={() => {setOpenAddEditModal({isShown:true,type :"add", data:null})}}
           >
             <MdAdd className='text-[32px]  text-white ' />
           </button>
-          {/* <Modal
+          <Modal
           isOpen ={openAddEditModal.isShown}
           onRequestClose={()=>{}}
           style={{
@@ -47,10 +51,13 @@ function Home() {
             },
           }}
           contentLabel=" "
-          className="">
-          </Modal> */}
-          <AddEditNotes/>
-      </div>
+          className="w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-scroll" >
+            <AddEditNotes
+            onClose={()=>{ setOpenAddEditModal({isShown:false,type:"add" ,data:null})}}
+            type={openAddEditModal.type}
+            noteData={openAddEditModal.data}/>
+           
+          </Modal>
     </div>
   );
 }
