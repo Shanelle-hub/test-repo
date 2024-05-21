@@ -22,7 +22,7 @@ function TagInput({ tags, setTags }) {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
   return (
-    <div className='flex items-center gap-4 mt-3'>
+    <div className='flex  flex-col items-start gap-4 mt-3'>
       {tags?.length > 0 && (
         <div className='flex items-center gap-2  flex-wrap mt-2 '>
           {tags.map((tag, index) => (
@@ -42,12 +42,13 @@ function TagInput({ tags, setTags }) {
           ))}
         </div>
       )}
+      <div className="flex items-center w-full gap-3">
       <input
       value={inputValue}
         type='text'
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        className='text-sm bg-transparent-border px-3 py-2 rounded outline-none'
+        className=' flex-1  text-sm bg-transparent-border border-2 px-3 py-2 rounded outline-none'
         placeholder='Add tags '
       />
       <button
@@ -58,6 +59,7 @@ function TagInput({ tags, setTags }) {
       >
         <MdAdd className='text-2xltext-blue-700 hover:text-white' />
       </button>
+      </div>
     </div>
   );
 }

@@ -10,10 +10,10 @@ import { BrowserRouter  as  Router,Routes,Route,useNavigate} from 'react-router-
   return(
   <Router>                         
     <Routes>
-        <Route path='/dashboard' exact element={<Home />}/>
-        <Route path='/signup' exact element={<Signup />} />
-        <Route path='/login' exact element={<Login/>} />
-        <Route path='/' element={<Landing/>}/>
+        <Route path='/dashboard'  element={<Home />}/>
+        <Route path='/signup'  element={<Signup />} />
+        <Route path='/login'  element={<Login/>} />
+        <Route path='/' index element={<Landing/>}/>
        </Routes>
     </Router>
     )
