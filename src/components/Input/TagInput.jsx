@@ -7,8 +7,9 @@ function TagInput({ tags, setTags }) {
     setInputValue(e.target.value);
   };
   const addNewTag = () => {
-    if (inputValue.trim() !== "") {
-      setTags([...tags, inputValue.trim()]);
+    const newInput = inputValue.split(" ").join("")
+    if (newInput !== "") {
+      setTags([...tags, newInput]);
       setInputValue("");
     }
   };
@@ -29,7 +30,7 @@ function TagInput({ tags, setTags }) {
               key={index}
               className='flex items-center gap-2 text-sm text-slate-900 bg-slate-100 px-3 py-1 rounded '
             >
-              # {tag}
+              #{tag}
               <button
                 onClick={() => {
                   handleRemoveTag(tag);
@@ -51,9 +52,9 @@ function TagInput({ tags, setTags }) {
       />
       <button
         className='w-8 h-8 flex items-center justify-center  rounded border border-blue-700 hover:bg-blue-700'
-        onClick={() => {
-          addNewTag;
-        }}
+        onClick={() => 
+          addNewTag()
+        }
       >
         <MdAdd className='text-2xltext-blue-700 hover:text-white' />
       </button>
