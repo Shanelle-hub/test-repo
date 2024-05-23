@@ -10,6 +10,7 @@ import { BrowserRouter  as  Router,Routes,Route,useNavigate} from 'react-router-
   return(
   <Router>                         
     <Routes>
+         <Route path='/' element={<Landing/>}/>
         <Route path='/dashboard'  element={<Home />}/>
         <Route path='/signup'  element={<Signup />} />
         <Route path='/login'  element={<Login/>} />
@@ -23,6 +24,12 @@ function App() {
     <div>
       <Routers/>
     </div>
+  )
+}
+function Landing(){
+  const navigate =useNavigate()
+  return(
+    navigate('/dashboard')
   )
 }
 
