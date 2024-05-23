@@ -13,7 +13,6 @@ import { BrowserRouter  as  Router,Routes,Route,useNavigate} from 'react-router-
         <Route path='/dashboard'  element={<Home />}/>
         <Route path='/signup'  element={<Signup />} />
         <Route path='/login'  element={<Login/>} />
-        <Route path='/' index element={<Landing/>}/>
        </Routes>
     </Router>
     )
@@ -27,12 +26,5 @@ function App() {
   )
 }
 
-function Landing() {
-  const navigate=useNavigate()
-  useEffect(()=>{
- navigate('/dashboard')
-  },[])
-  return 
-}
 
 export default App
