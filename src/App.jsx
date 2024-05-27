@@ -10,9 +10,8 @@ import { BrowserRouter  as  Router,Routes,Route} from 'react-router-dom'
   return(
   <Router>                         
     <Routes>
-        
         <Route path='/dashboard'  element={<Home />}/>
-        <Route path='/signup'  element={<Signup />} />
+        <Route path='/'  element={<Signup />} />
         <Route path='/login'  element={<Login/>} />
        </Routes>
     </Router>

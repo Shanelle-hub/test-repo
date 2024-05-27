@@ -3,7 +3,7 @@
 import TagInput from '../../components/Input/TagInput'
 import { MdClose } from 'react-icons/md'
   
-  function AddEditNotes({type,noteData,getAllNotes,onClose}) {
+  function AddEditNotes({type,noteData,getAllNotes,onClose,showToastMessage}) {
     const [title,setTitle]=useState(noteData.title ||"")
     const [tags,setTags]=useState(noteData.tags || [])
     const [content,setContent]=useState( noteData.content ||"")
@@ -17,6 +17,7 @@ const addNewNote= async ()=>{
       tags,
     })
     if(response.data && response.data.note){
+      showToastMessage("Note added successfully")
      getAllNotes()
      onClose()
     }
@@ -39,6 +40,7 @@ const editNote=  async (noteData)=>{
       tags,
     })
     if(response.data && response.data.note){
+      showToastMessage("Note edited successfully !")
      getAllNotes()
      onClose()
     }

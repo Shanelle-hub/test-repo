@@ -5,7 +5,7 @@ import SearchBar from '../SearchBar/SearchBar'
 
 
 
-function Navbar({userInfo}) {
+function Navbar({userInfo,onSearchNote ,handleClearSearch}) {
 
   const [searchQuery,setSearchQuery]=useState("");
 const navigate=useNavigate()
@@ -15,10 +15,13 @@ const navigate=useNavigate()
     navigate('/login')
    }
    const handleSearch=()=>{
-
+  if(searchQuery){
+    onSearchNote()
+  }
    }
    const onClearSearch = ()=>{
  setSearchQuery("")
+ handleClearSearch()
    }
    
 

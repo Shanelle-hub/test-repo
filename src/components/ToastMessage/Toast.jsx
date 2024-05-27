@@ -1,9 +1,20 @@
 import React from "react";
 import {LuCheck} from "react-icons/lu"
 import {MdDeleteOutline} from "react-icons/md"
+ import { useEffect } from "react";
 
 function Toast({ isShown, message, type, onClose }) {
-  return (
+   useEffect(() => {
+     const timeoutId = setTimeout(()=>{
+      onClose()
+     },3000)
+   
+     return () => {
+       clearTimeout(timeoutId)
+     }
+   }, [onClose])
+   
+  return  ( 
     <div className={`absolute  top-20 right-6 transition-all duration-400 ${ !isShown  ? "opacity-100":"opacity-0"}`}>
       <div
         className={`min-w-52 bg-white border shadow-2xl  rounded-md after:w-[5px] after:h-full ${
@@ -18,7 +29,7 @@ function Toast({ isShown, message, type, onClose }) {
           >
            { type === "delete" ?(<MdDeleteOutline className="text-xl text-red-500"/> ) :(<LuCheck className='text-xl text-green-500' />)}
           </div>
-          <p className='text-sm text-slate-800'>Note Added Successfully</p>
+          <p className='text-sm text-slate-800'>{message}</p>
         </div>
       </div>
     </div>

@@ -73,7 +73,7 @@ function Login() {
                 {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
                 <button type="submit" className="btn-primary">Login</button>
                 <p className="text-sm text-center mt-4">Not Registered yet?{""}
-                <Link to="/signup" className="font-medium text-primary underline">
+                <Link to="/" className="font-medium text-primary underline">
                     Create an Account
                 </Link>
                 </p>
