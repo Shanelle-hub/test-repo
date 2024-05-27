@@ -3,14 +3,54 @@
 import TagInput from '../../components/Input/TagInput'
 import { MdClose } from 'react-icons/md'
   
-  function AddEditNotes({type,noteData,onClose}) {
-    const [title,setTitle]=useState("")
-    const [tags,setTags]=useState([])
-    const [content,setContent]=useState("")
+  function AddEditNotes({type,noteData,getAllNotes,onClose}) {
+    const [title,setTitle]=useState(noteData.title ||"")
+    const [tags,setTags]=useState(noteData.tags || [])
+    const [content,setContent]=useState( noteData.content ||"")
     const [error,setError]=useState(null)
 
-const addNewNote= async ()=>{}
-const editNote=  async ()=>{}
+const addNewNote= async ()=>{
+   try{
+    const response= await axiosInstance.post('/add-note',{
+      title,
+      content,
+      tags,
+    })
+    if(response.data && response.data.note){
+     getAllNotes()
+     onClose()
+    }
+  }
+    catch(error){
+      if(error.response && error.response.data && error.response.data.message){
+        setError(error.response.data.message)
+      }
+
+    }
+   
+}
+const editNote=  async (noteData)=>{
+  const noteId= noteData._id
+  
+  try{
+    const response = await axiosInstance.post('/add-note' + noteId,{
+      title,
+      content,
+      tags,
+    })
+    if(response.data && response.data.note){
+     getAllNotes()
+     onClose()
+    }
+  }
+    catch(error){
+      if(error.response && error.response.data && error.response.data.message){
+        setError(error.response.data.message)
+      }
+
+    }
+   
+}
 
     const handleAddNote=()=>{
       if(!title){
@@ -60,7 +100,7 @@ const editNote=  async ()=>{}
     <TagInput tags={tags} setTags={setTags}/>
  </div>
  {error && <p className='text-red-500 text-xs pt-4 '>{error}</p>}
- <button className='btn-primary  font-medium mt-5 p-3' onClick={handleAddNote}>Add</button>
+ <button className='btn-primary  font-medium mt-5 p-3' onClick={handleAddNote}>{type === 'edit' ? 'update' : 'Add'}</button>
       </div>
     )
   }

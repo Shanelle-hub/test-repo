@@ -11,6 +11,7 @@ function Navbar({userInfo}) {
 const navigate=useNavigate()
 
    const onLogOut= ()=>{
+    localeStorage.clear()
     navigate('/login')
    }
    const handleSearch=()=>{
